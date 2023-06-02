@@ -9,62 +9,63 @@
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<main>
-<div class="leftSide">
-  <div class="cardsContainer">
-    <div class="frontCard">
-      <img src="./images/bg-card-front.png" alt="front of card">
-      0000 0000 0000 0000
-      Jane Appleseed
-      00/00
-    </div>
+  <main>
+    <div class="leftSide">
+      <div class="cardsContainer">
+        <div class="frontCard">
+          <img src="./images/bg-card-front.png" alt="front of card">
+          0000 0000 0000 0000
+          Jane Appleseed
+          00/00
+        </div>
 
-    <div class="backCard">
-      <img src="./images/bg-card-back.png" alt="back of card">
-      000
+        <div class="backCard">
+          <img src="./images/bg-card-back.png" alt="back of card">
+          000
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="rightSide">
-<form action="#">
-  <label for="name">
-  Cardholder Name
-  </label>
-  <br>
-  <input type="text" placeholder="e.g. Jane Appleseed" required>
-  
-  <label for="cardNumber">
-    Card Number
-  </label>
-  <br>
-  <input type="number" placeholder="e.g. 1234 5678 9123 0000" required>
-  
-  <div>
-    <div>
-      <label for="expDate">
-        Exp. Date (MM/YY)
-      </label>
-      <label for="">
-      CVC
-      </label>
-      
-    
-      <br>
-      <input type="text" placeholder="MM">
-      <input type="text" placeholder="YY">
-      <input type="number" placeholder="e.g. 123">
+    <div class="rightSide">
+      <form action="#" id="form">
+        <label for="fname">
+          Cardholder Name
+        </label>
+        <br>
+        <input id="fname" type="text" placeholder="e.g. Jane Appleseed" required>
+        
+        <label for="cardNumber">
+          Card Number
+        </label>
+        <br>
+        <input id="cardNumber" type="number" placeholder="e.g. 1234 5678 9123 0000" required>
+        
+        <div>
+          <div>
+            <label for="expDate">
+              Exp. Date (MM/YY)
+            </label>
+            <label for="CVC">
+            CVC
+            </label>
+            
+          
+            <br>
+            <input name="expDate" type="text" placeholder="MM">
+            <input name="expDate" type="number" placeholder="YY">
+            <input id="CVC" type="number" placeholder="e.g. 123">
+          </div>
+        </div>
+        
+        <button>Confirm</button>
+      </form>
     </div>
-  </div>
-  
-  <button>Confirm</button>
-</form>
-</div>
-  <!-- Completed state start -->
-
-  Thank you!
-  We've added your card details
-  Continue
-</main>
+      <!-- Completed state start -->
+    <div class="thankYou">
+      Thank you!
+      We've added your card details
+      Continue
+    </div>
+  </main>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
