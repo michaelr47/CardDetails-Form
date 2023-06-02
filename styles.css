@@ -8,5 +8,19 @@ body {
     min-height: 100vh;
 }
 
+main {
+    display: flex;
+    align-items: center;
+}
+
+.leftSide {
+    width: 35%;
+    min-height: 100vh;
+    
+}
+
+.thankYou {
+    display: none;
+}
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); } 
