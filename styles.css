@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+body, html {
     min-height: 100vh;
 }
 
@@ -23,13 +23,13 @@ main {
 
 .frontCard {
     position: absolute;
-    top: 125px;
+    top: 75px;
     left: 150px;
 }
 
 .backCard {
     position: absolute;
-    top: 400px;
+    top: 350px;
     left: 250px;
 }
 .rightSide {
@@ -44,3 +44,7 @@ main {
 }
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); } 
+@media only screen and (max-width: 1200px) {
+    .leftSide { width: 50%; }
+    
+}
