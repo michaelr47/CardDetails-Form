@@ -10,13 +10,33 @@ body {
 
 main {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 }
 
 .leftSide {
     width: 35%;
     min-height: 100vh;
-    
+    background-image: url('./images/bg-main-desktop.png');
+    background-size: cover;
+}
+.cardsContainer { position: relative;}
+
+.frontCard {
+    position: absolute;
+    top: 125px;
+    left: 150px;
+}
+
+.backCard {
+    position: absolute;
+    top: 400px;
+    left: 250px;
+}
+.rightSide {
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
 }
 
 .thankYou {
