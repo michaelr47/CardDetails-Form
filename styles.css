@@ -26,7 +26,21 @@ main {
     top: 75px;
     left: 150px;
 }
+img{ 
+    display: block;
+}
+.frontCardContent { 
+    position: relative;
+}
 
+.logoDiv {
+    position: absolute;
+    top: 0;
+}
+.cardInfo {
+    position: absolute;
+    bottom: 0;
+}
 .backCard {
     position: absolute;
     top: 350px;
