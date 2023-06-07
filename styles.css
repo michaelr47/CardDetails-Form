@@ -32,6 +32,7 @@ main {
     min-height: 100vh;
     background-image: url('./images/bg-main-desktop.png');
     background-size: cover;
+    color: var(--white);
 }
 .cardsContainer { position: relative;}
 
@@ -40,6 +41,12 @@ main {
     top: 75px;
     left: 150px;
 }
+
+#sixteen {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    
+}
 img{ 
     display: block;
 }
@@ -47,20 +54,22 @@ img{
     position: relative;
 }
 
-
+.contentOnTop {
+    display: flex;
+}
 .logoDiv {
     position: absolute;
     top: 20px;
     left: 25px;
 }
 .cardInfo {
+    width: 100%;
     position: absolute;
     bottom: 20px;
     text-align: center;
 }
 .cardInfo p {
     font-size: 1.4rem;
-    color: white;
 }
 
 .backCard {
@@ -75,7 +84,7 @@ img{
     justify-content:center;
 }
 
-.thankYou {
+.hidden {
     display: none;
 }
 .attribution { font-size: 11px; text-align: center; }
