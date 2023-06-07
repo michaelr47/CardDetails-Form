@@ -43,8 +43,8 @@ main {
 }
 
 #sixteen {
-    font-size: 1.8rem;
-    letter-spacing: 3px;
+    font-size: 1.5rem;
+    letter-spacing: 6px;
     
 }
 img{ 
@@ -68,15 +68,15 @@ img{
     bottom: 20px;
     text-align: center;
 }
-.cardInfo p {
-    font-size: 1.4rem;
+
+.nameAndDate {
+    width: 100%;
+    padding: 0px 2rem;
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-.backCard {
-    position: absolute;
-    top: 350px;
-    left: 250px;
-}
 .rightSide {
     width: 75%;
     display: flex;
@@ -84,6 +84,16 @@ img{
     justify-content:center;
 }
 
+.backCard {
+    position: absolute;
+    top: 350px;
+    left: 250px;
+}
+.cvc {
+    position: absolute;
+    top: 110px;
+    right: 60px;
+}
 .hidden {
     display: none;
 }
