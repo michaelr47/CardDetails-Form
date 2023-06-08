@@ -103,6 +103,9 @@ form {
     height: 400px;
     margin-left: 10rem;
     /* z-index: -1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 .attribution { font-size: 11px; text-align: center; }
