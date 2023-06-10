@@ -109,16 +109,28 @@ form {
     justify-content: space-evenly;
 
 }
+input:hover {
+    cursor: pointer;
+}
 .cardInput { 
     width: 100%;
     height: 2.5rem;
     border: 1px solid var(--lightGrayish);
     border-radius: 5px;
+    outline: none;
 }
 
-/* .cardInput:active {
-    border: 
-} */
+.cardInput:active {
+    border-width: 1px;
+    border-style: solid; 
+    border-image: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%)) 10;
+
+}
+
+.dateAndCVC {
+    display: flex;
+}
+
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); } 
 @media only screen and (max-width: 1200px) {
