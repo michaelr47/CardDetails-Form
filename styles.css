@@ -118,6 +118,8 @@ input:hover {
     border: 1px solid var(--lightGrayish);
     border-radius: 5px;
     outline: none;
+    padding: .5rem;
+
 }
 
 .cardInput:active {
@@ -130,7 +132,22 @@ input:hover {
 .dateAndCVC {
     display: flex;
 }
+.dateContainer, .cvcContainer {
+    width: 50%;
+}
 
+.MMYY, #CVCInput {
+    height: 2.5rem;
+    border: 1px solid var(--lightGrayish);
+    border-radius: 5px;
+    width: 35%;
+    padding: .5rem;
+    margin: 5px 0px 0px;
+}
+
+#CVCInput {
+    width: 100%;
+}
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); } 
 @media only screen and (max-width: 1200px) {

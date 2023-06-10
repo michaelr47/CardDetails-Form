@@ -63,7 +63,7 @@
             </small>
           </label>
           <br>
-          <input class="cardInput" id="cardNumber" type="number" placeholder="e.g. 1234 5678 9123 0000" required>
+          <input class="cardInput" id="cardNumber" type="text" placeholder="e.g. 1234 5678 9123 0000" required>
         </div>
 
         <div class="dateAndCVC">
@@ -73,19 +73,21 @@
                 EXP. DATE (MM/YY) 
               </small>
             </label>
-            <input name="expDate" type="text" placeholder="MM">
-            <input name="expDate" type="number" placeholder="YY">
+            <br>
+            <input class="MMYY" name="expDate" type="text" placeholder="MM">
+            <input class="MMYY" name="expDate" type="text" placeholder="YY">
           </div>
-          <div>
+          <div class="cvcContainer">
             <label for="CVC">
               <small>
                 CVC
               </small>
             </label>
-            <input id="CVC" type="number" placeholder="e.g. 123">
+            <br>
+            <input id="CVCInput" type="text" placeholder="e.g. 123">
           </div>
         </div>
-        
+
         <button>Confirm</button>
       </form>
     </div>
