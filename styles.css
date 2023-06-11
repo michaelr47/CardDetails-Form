@@ -107,8 +107,15 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    font-weight: 600;
+    letter-spacing: 1.5px;
 
 }
+input::placeholder { 
+    font-family: 'Space Grotesk';
+    color: hsl(0, 0%, 80%);
+    font-size: 1rem;
+ }
 input:hover {
     cursor: pointer;
 }
