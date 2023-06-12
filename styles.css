@@ -172,17 +172,30 @@ input:hover {
 .attribution a { color: hsl(228, 45%, 44%); } 
 
 
-@media only screen and (max-width: 1230px) {
+@media only screen and (max-width: 1280px) {
     .leftSide { width: 40%; }
     .rightSide { width: 70%; }
-    .card { width: 375px; }
-    .cvc { top: 90px; }
+    .card { width: 400px; }
+    .cvc { top: 95px; }
     .frontCard { left: 125px; }
     .backCard { left: 175px; }
     #cardLogo { width: 60px; }
-    form { width: 350px; }
+    form { width: 375px;
+    margin-left: 7.5rem; }
     #sixteen {
         font-size: 1.2rem;
         letter-spacing: 5px;
     }
+}
+
+@media only screen and (max-width: 1060px) {
+    .leftSide { width: 45%; }
+    .rightSide { width: 65%; }
+    .card { width: 375px; }
+    form { width: 350px;
+    margin-left: 5rem; }
+    .cvc { top: 90px; right: 50px;}
+    .frontCard { left: 100px; }
+    .backCard { left: 140px; }
+
 }
