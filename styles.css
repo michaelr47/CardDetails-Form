@@ -45,11 +45,12 @@ main {
 #sixteen {
     font-size: 1.5rem;
     letter-spacing: 6px;
-    
 }
+
 img{ 
     display: block;
 }
+
 .frontCardContent { 
     position: relative;
 }
@@ -169,7 +170,19 @@ input:hover {
 }
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); } 
-@media only screen and (max-width: 1200px) {
-    .leftSide { width: 50%; }
-    
+
+
+@media only screen and (max-width: 1230px) {
+    .leftSide { width: 40%; }
+    .rightSide { width: 70%; }
+    .card { width: 375px; }
+    .cvc { top: 90px; }
+    .frontCard { left: 125px; }
+    .backCard { left: 175px; }
+    #cardLogo { width: 60px; }
+    form { width: 350px; }
+    #sixteen {
+        font-size: 1.2rem;
+        letter-spacing: 5px;
+    }
 }
