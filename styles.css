@@ -199,3 +199,29 @@ input:hover {
     .backCard { left: 140px; }
 
 }
+
+@media only screen and (max-width: 960px) {
+    main {
+        flex-direction: column;
+    }
+    .leftSide { 
+        min-height: 40vh;
+        width: 100%;
+    }
+    .rightSide { 
+        min-height: 60vh;
+        width: 100%;
+     }
+    form {
+        margin: 5px;
+        width: 60%;
+    }
+    .frontCard {
+        z-index: 1;
+        top: 60px;
+    }
+    .backCard {
+        top: 35px;
+        z-index: 0;
+    }
+}
