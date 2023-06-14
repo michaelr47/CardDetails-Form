@@ -230,15 +230,10 @@ input:hover {
 }
 
 
-/* @media only screen and (max-width: 768px) {
-    form {
-        width: 100%;
-    }
-    .frontCard {
-        to the left
-    }
-    backCard {
-        to the right
-    }
+@media only screen and (max-width: 768px) {
+    form { width: 100%; }
+    .card { width: 380px; }
+    .frontCard { left: 100px; }
+    .backCard { left: 150px; }
 
-} */
+}
