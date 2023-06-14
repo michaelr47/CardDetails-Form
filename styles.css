@@ -47,12 +47,8 @@ main {
     letter-spacing: 6px;
 }
 
-img{ 
+img { 
     display: block;
-}
-
-.frontCardContent { 
-    position: relative;
 }
 
 .contentOnTop {
@@ -100,7 +96,6 @@ img{
 }
 
 form {
-    /* border: 1px solid black; */
     height: 375px;
     width: 400px;
     padding: 1rem;
@@ -170,36 +165,21 @@ input:hover {
     border-radius: 5px;
     border: none;
 }
+
+#confirmBtn:hover { cursor: pointer; }
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); } 
 
 
 @media only screen and (max-width: 1280px) {
     .leftSide { width: 40%; }
-    .rightSide { width: 70%; }
     .card { width: 400px; }
     .cvc { top: 95px; }
-    .frontCard { left: 125px; }
-    .backCard { left: 175px; }
-    #cardLogo { width: 60px; }
-    form { width: 375px;
-    margin-left: 7.5rem; }
-    #sixteen {
-        font-size: 1.2rem;
-        letter-spacing: 5px;
-    }
-}
-
-@media only screen and (max-width: 1060px) {
-    .leftSide { width: 35%; }
-    .rightSide { width: 65%; }
-    .card { width: 375px; }
-    form { width: 350px;
-    margin-left: 6rem; }
-    .cvc { top: 90px; right: 50px;}
     .frontCard { left: 75px; }
-    .backCard { left: 115px; }
-
+    .backCard { left: 120px; }
+    #cardLogo { width: 60px; }
+    form { width: 375px; }
+    #sixteen { font-size: 1.2rem; }
 }
 
 @media only screen and (max-width: 960px) {
@@ -239,7 +219,12 @@ input:hover {
     .backCard { left: 150px; }
 }
 
-@media only screen and (max-width: 520px) {
-
-
+@media only screen and (max-width: 596px) {
+    /* .card { width: 350px; } */
+    .frontCard { left: 55px;}
+    .backCard { left: 100px;}
 }
+
+/* @media only screen and (max-width: 596px) {
+
+} */
