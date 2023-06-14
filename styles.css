@@ -131,12 +131,6 @@ input:hover {
 
 }
 
-.cardInput:active {
-    border-width: 1px;
-    border-style: solid; 
-    border-image: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%)) 10;
-
-}
 
 .dateAndCVC {
     display: flex;
@@ -156,6 +150,14 @@ input:hover {
 
 #CVCInput {
     width: 100%;
+    outline: none;
+
+}
+.cardInput:focus, #CVCInput:focus {
+    border-width: 1px;
+    border-style: solid; 
+    border-image: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%)) 10;
+
 }
 
 #confirmBtn {
@@ -235,5 +237,9 @@ input:hover {
     .card { width: 380px; }
     .frontCard { left: 100px; }
     .backCard { left: 150px; }
+}
+
+@media only screen and (max-width: 520px) {
+
 
 }
