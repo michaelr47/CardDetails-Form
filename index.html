@@ -58,7 +58,7 @@
             </small>
           </label>
           <br>
-          <input class="cardInput" id="cardNumber" type="text" placeholder="e.g. 1234 5678 9123 0000" required>
+          <input class="cardInput" id="cardNumber" type="text" placeholder="e.g. 1234 5678 9123 0000" maxlength="16" minlength="16" required>
         </div>
 
         <div class="dateAndCVC">
@@ -69,8 +69,8 @@
               </small>
             </label>
             <br>
-            <input class="MMYY cardInput" name="expDate" type="text" placeholder="MM">
-            <input class="MMYY cardInput" name="expDate" type="text" placeholder="YY" style="margin-left: 5px;">
+            <input class="MMYY cardInput" name="expDate" type="text" placeholder="MM" maxlength="2"  minlength="2" required>
+            <input class="MMYY cardInput" name="expDate" type="text" placeholder="YY" maxlength="2" minlength="2" style="margin-left: 5px;" required>
           </div>
           <div class="cvcContainer">
             <label for="CVC">
@@ -79,7 +79,7 @@
               </small>
             </label>
             <br>
-            <input id="CVCInput" type="text" placeholder="e.g. 123">
+            <input id="CVCInput" type="text" placeholder="e.g. 123" minlength="3" maxlength="3" required>
           </div>
         </div>
 
