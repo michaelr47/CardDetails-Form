@@ -49,16 +49,20 @@ const cardExpDateValidation = date => {
 }
 
 const cvcValidation = code => {
+    let errorMsg = document.createElement('p');
+    errorMsg.classList.add('errorMessage');
+    errorMsg.innerText = `Can't be blank`;
     let tempCode = String(code);
    
     if (Number(code) && tempCode.length === 3) {
         return true;
     } else {
+        document.querySelector('.cvcContainer').appendChild(errorMsg);
         return false;
     }
 }
 
-// console.log(cvcValidation(391));
+console.log(cvcValidation(31));
 const checkValidity = () => {
     const cardName = document.getElementById('fname').value;
     const cardNumber = document.getElementById('cardNumber').value;
