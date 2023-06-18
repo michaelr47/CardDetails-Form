@@ -41,16 +41,17 @@ errorMsg.classList.add('errorMessage');
 errorMsg.innerText = `Can't be blank`;
 
 const cardNameValidation = name => {
-    return name.length < 0 && 
-        isNaN(name) && 
-        Array.from(name).includes(' ') 
-        ? true
-    : 
-    document.querySelector('.cardNameContainer').appendChild(errorMsg);
+    errorMsg.innerText = `Full name please`;
+
+    if (name.length === 0 || !isNaN(name) ||!Array.from(name).includes(' ')) { 
+        document.querySelector('.cardNameContainer').appendChild(errorMsg) 
+        document.getElementById('fname').classList.add('errorBorder');   
+    } else return true;
+    
    
 }
+console.log(cardNameValidation('MichaelKroger'));
 
-console.log(cardNameValidation('Jake Martinez'));
 const cardNumberValidation = number => {
     return number.length < 16 ? 'Card number should be 16 numbers long' : true;
 }
@@ -66,7 +67,7 @@ const cvcValidation = code => {
         return true;
     } else {
         document.querySelector('.cvcContainer').appendChild(errorMsg);
-        document.getElementById('CVCInput').style.border = '1px solid red';
+        document.getElementById('CVCInput').classList.add('errorBorder');
         return false;
     }
 }
