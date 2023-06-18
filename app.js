@@ -36,10 +36,21 @@ If all validation functions return true, allow the form submission or proceed wi
 */
 const confirmButton = document.getElementById('confirmBtn');
 
+let errorMsg = document.createElement('p');
+errorMsg.classList.add('errorMessage');
+errorMsg.innerText = `Can't be blank`;
+
 const cardNameValidation = name => {
-    return name.length < 0 || isNaN(name);
+    return name.length < 0 && 
+        isNaN(name) && 
+        Array.from(name).includes(' ') 
+        ? true
+    : 
+    document.querySelector('.cardNameContainer').appendChild(errorMsg);
+   
 }
 
+console.log(cardNameValidation('Jake Martinez'));
 const cardNumberValidation = number => {
     return number.length < 16 ? 'Card number should be 16 numbers long' : true;
 }
@@ -49,20 +60,17 @@ const cardExpDateValidation = date => {
 }
 
 const cvcValidation = code => {
-    let errorMsg = document.createElement('p');
-    errorMsg.classList.add('errorMessage');
-    errorMsg.innerText = `Can't be blank`;
     let tempCode = String(code);
    
     if (Number(code) && tempCode.length === 3) {
         return true;
     } else {
         document.querySelector('.cvcContainer').appendChild(errorMsg);
+        document.getElementById('CVCInput').style.border = '1px solid red';
         return false;
     }
 }
 
-console.log(cvcValidation(31));
 const checkValidity = () => {
     const cardName = document.getElementById('fname').value;
     const cardNumber = document.getElementById('cardNumber').value;

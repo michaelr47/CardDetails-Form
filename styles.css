@@ -168,7 +168,8 @@ input:hover {
 
 .errorMessage {
     color: red;
-    font-size: 12px;
+    margin: 5px 0px;
+    font-size: 11px;
 }
 #confirmBtn:hover { cursor: pointer; }
 .attribution { font-size: 11px; text-align: center; }
