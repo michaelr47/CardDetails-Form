@@ -97,19 +97,42 @@ confirmButton.addEventListener('click', event => {
 
 })
 
-const updateCardInfo = () => {
-    const inputs = document.getElementsByTagName('input');
-    const cardSixteen = document.getElementById('sixteen');
-    const cardNameText = document.getElementById('cardName');
-    const cardMonth = document.getElementById('month');
-    const cardYear = document.getElementById('year');
+const cardSixteen = document.getElementById('sixteen');
+const cardNameText = document.getElementById('cardName');
+const cardMonth = document.getElementById('month');
+const cardYear = document.getElementById('year');
+const securityCode = document.getElementById('cvcCode');
+const allItems = [cardSixteen, cardNameText, cardMonth, cardYear, securityCode];
+const inputs = document.getElementsByTagName('input');
 
-    for (const input of inputs) {
-        if (input)
-        input.addEventListener('input', () => {
-            cardSixteen.innerText = input.value;
+const changeCardName = () => {
+    inputs[0].addEventListener('input', () => {
+            cardNameText.innerText = inputs[0].value;
         })
-   }
+}
+const changeCardNumber = () => {
+    inputs[1].addEventListener('input', () => {
+            cardSixteen.innerText = inputs[1].value;
+        })
+}
+const changeCardMonth = () => {
+    inputs[2].addEventListener('input', () => {
+            cardMonth.innerText = inputs[2].value;
+        })
+}
+const changeCardYear = () => {
+    inputs[3].addEventListener('input', () => {
+            cardYear.innerText = inputs[3].value;
+        })
+}
+const changeCardSecurityCode = () => {
+    inputs[4].addEventListener('input', () => {
+            securityCode.innerText = inputs[4].value;
+        })
 }
 
-updateCardInfo();
+changeCardName();
+changeCardNumber();
+changeCardMonth();
+changeCardYear();
+changeCardSecurityCode();
