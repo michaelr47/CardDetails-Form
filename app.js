@@ -114,6 +114,16 @@ const changeCardNumber = () => {
     inputs[1].addEventListener('input', () => {
             cardSixteen.innerText = inputs[1].value;
         })
+    //     let val = this.value; //card number input
+  
+    //     for (let i = 0; i < val.length; i++) { // add space after four numbers
+    //       if (i % 4 && i > 0) {
+    //         val.concat(' ')
+       
+    //     }
+       
+    //   }
+      
 }
 const changeCardMonth = () => {
     inputs[2].addEventListener('input', () => {
