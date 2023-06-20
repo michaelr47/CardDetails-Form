@@ -54,7 +54,8 @@ const cardNumberValidation = number => {
     let stringNumber = String(number);
     errorMsg.innerText =  'Wrong format, numbers only';
 
-    return stringNumber.length < 16 || !isNaN(number) ? 'Card number should be 16 numbers long' : true;
+    return stringNumber.length < 16 || !isNaN(number) ? // check on isNaN and add spaces between 4 numbers if true
+     'Card number should be 16 numbers long' : true;
 }
 
 const cardExpDateValidation = date => {
@@ -85,8 +86,7 @@ const checkValidity = () => {
     cardNumberValidation(cardNumber);
     cardExpDateValidation(expMonth)
     cardExpDateValidation(expYear);
-
-
+    cvcValidation(cvc);
 } 
 
 
@@ -96,3 +96,20 @@ confirmButton.addEventListener('click', event => {
     checkValidity();
 
 })
+
+const updateCardInfo = () => {
+    const inputs = document.getElementsByTagName('input');
+    const cardSixteen = document.getElementById('sixteen');
+    const cardNameText = document.getElementById('cardName');
+    const cardMonth = document.getElementById('month');
+    const cardYear = document.getElementById('year');
+
+    for (const input of inputs) {
+        if (input)
+        input.addEventListener('input', () => {
+            cardSixteen.innerText = input.value;
+        })
+   }
+}
+
+updateCardInfo();
