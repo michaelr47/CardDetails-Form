@@ -33,76 +33,100 @@ If any validation function returns false, mark the respective input field as inv
 
 If all validation functions return true, allow the form submission or proceed with further processing.
 */
+
+const cardName = document.getElementById('fname');
+const cardNumber = document.getElementById('cardNumber');
+const expMonth = document.getElementById('expDateMM');
+const expYear = document.getElementById('expDateYY');
+const cvc = document.getElementById('CVCInput');
 const confirmButton = document.getElementById('confirmBtn');
 
 let errorMsg = document.createElement('p');
 errorMsg.classList.add('errorMessage');
-errorMsg.innerText = `Can't be blank`;
+errorMsg.innerText = '';
 
 const cardNameValidation = name => {
-    errorMsg.innerText = `Full name please`;
+    errorMsg.innerText = 'Full name please';
 
-    if (name.length === 0 || !isNaN(name) ||!Array.from(name).includes(' ')) { 
-        document.querySelector('.cardNameContainer').appendChild(errorMsg) 
-        document.getElementById('fname').classList.add('errorBorder');   
-    } else return true;
-    
-   
+    if (name.length === 0 || !isNaN(name) || !Array.from(name).includes(' ')) { 
+        document.querySelector('.cardNameContainer').appendChild(errorMsg);
+        cardName.classList.add('errorBorder');   
+    } else {
+        removeErrorMessage();
+        return true;
+    }
 }
 
 const cardNumberValidation = number => {
+    
     let stringNumber = String(number);
-    errorMsg.innerText =  'Wrong format, numbers only';
+    errorMsg.innerText = 'Wrong format, numbers only';
 
-    return stringNumber.length < 16 || !isNaN(number) ? // check on isNaN and add spaces between 4 numbers if true
-     'Card number should be 16 numbers long' : true;
+    if (stringNumber.length < 16 || isNaN(number))  {//add spaces between 4 numbers if true
+        document.querySelector('.cardNumberContainer').appendChild(errorMsg);
+        cardNumber.classList.add('errorBorder');
+    } else {
+        removeErrorMessage();
+        return true; 
+    } 
 }
 
 const cardExpDateValidation = date => {
-    return date.length < 2 || date.length === 0 ? 'invalid exp date' : 'valid exp date';
+   
+    errorMsg.innerText = 'Cant\'t be blank';
+    if (date.length < 2 || date === '') { 
+        document.querySelector('.dateContainer').appendChild(errorMsg);
+        expMonth.classList.add('errorBorder');
+        expYear.classList.add('errorBorder');
+    } else {
+        removeErrorMessage();
+        return true;
+    }
 }
 
 const cvcValidation = code => {
     let tempCode = String(code);
-   
-    if (Number(code) && tempCode.length === 3) {
-        return true;
-    } else {
+    errorMsg.innerText = 'Can\'t be blank';
+    if (!Number(code) && tempCode.length !== 3) {
         document.querySelector('.cvcContainer').appendChild(errorMsg);
-        document.getElementById('CVCInput').classList.add('errorBorder');
-        return false;
+        cvc.classList.add('errorBorder');
+    } else {
+        removeErrorMessage();
+        return true;
     }
 }
 
+const removeErrorMessage = () => {
+    if (errorMsg.parentNode) {
+        errorMsg.parentNode.removeChild(errorMsg);
+    }
+}
+
+
 const checkValidity = () => {
-    const cardName = document.getElementById('fname').value;
-    const cardNumber = document.getElementById('cardNumber').value;
-    const expMonth = document.getElementById('expDateMM').value;
-    const expYear = document.getElementById('expDateYY').value;
-    const cvc = document.getElementById('CVCInput').value;
-    
 
-    cardNameValidation(cardName);
-    cardNumberValidation(cardNumber);
-    cardExpDateValidation(expMonth)
-    cardExpDateValidation(expYear);
-    cvcValidation(cvc);
+    cardNameValidation(cardName.value);
+    cardNumberValidation(cardNumber.value);
+    cardExpDateValidation(expMonth.value)
+    cardExpDateValidation(expYear.value);
+    cvcValidation(cvc.value);
 } 
-
 
 
 confirmButton.addEventListener('click', event => {
     event.preventDefault();
     checkValidity();
-
 })
 
+// DOM card elements
 const cardSixteen = document.getElementById('sixteen');
 const cardNameText = document.getElementById('cardName');
 const cardMonth = document.getElementById('month');
 const cardYear = document.getElementById('year');
 const securityCode = document.getElementById('cvcCode');
+// card el. in array
 const allItems = [cardSixteen, cardNameText, cardMonth, cardYear, securityCode];
+// all input elements
 const inputs = document.getElementsByTagName('input');
 
 const changeCardName = () => {
