@@ -110,12 +110,15 @@ const checkValidity = () => {
     cardExpDateValidation(expMonth.value)
     cardExpDateValidation(expYear.value);
     cvcValidation(cvc.value);
+
 } 
 
 
 confirmButton.addEventListener('click', event => {
     event.preventDefault();
     checkValidity();
+    document.getElementById('form').setAttribute('class', 'hidden');
+    document.querySelector('.thankYou').classList.remove('hidden');
 })
 
 // DOM card elements
