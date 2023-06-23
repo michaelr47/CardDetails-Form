@@ -41,65 +41,70 @@ const expYear = document.getElementById('expDateYY');
 const cvc = document.getElementById('CVCInput');
 const confirmButton = document.getElementById('confirmBtn');
 
-let errorMsg = document.createElement('p');
-errorMsg.classList.add('errorMessage');
-errorMsg.innerText = '';
+
 
 const cardNameValidation = name => {
+    let errorMsg = document.createElement('p');
+    errorMsg.classList.add('errorMessage');
     errorMsg.innerText = 'Full name please';
 
-    if (name.length === 0 || !isNaN(name) || !name.includes(' ')) { 
+    if (name.length === 0 || !/^[A-Za-z\s]+$/.test(name) || !name.includes(' ')) { 
         document.querySelector('.cardNameContainer').appendChild(errorMsg);
         cardName.classList.add('errorBorder');   
     } else {
-        removeErrorMessage();
+        removeErrorMessage(errorMsg);
         return true;
     }
 }
 
 const cardNumberValidation = number => {
-    
-    let stringNumber = String(number);
+    let errorMsg = document.createElement('p');
+    errorMsg.classList.add('errorMessage');
     errorMsg.innerText = 'Wrong format, numbers only';
+    let stringNumber = String(number);
 
     if (stringNumber.length !== 16 || isNaN(number) || stringNumber.length === 0)  {//add spaces between 4 numbers if true
         document.querySelector('.cardNumberContainer').appendChild(errorMsg);
         cardNumber.classList.add('errorBorder');
     } else {
-        removeErrorMessage();
+        removeErrorMessage(errorMsg);
         return true; 
     } 
 }
 
-const cardExpDateValidation = date => {
+const cardExpDateValidation = (month, year) => {
+    let errorMsg = document.createElement('p');
+    errorMsg.classList.add('errorMessage');
     errorMsg.innerText = 'Cant\'t be blank';
-    let value = date.value;
-    if (value < 10) { 
-        expMonth.value = `0${value}`;
-    } 
-    if (date.length < 2 || date === '' && date < 0 || date > 13) { 
+   
+    if (month.length < 2 || year.length < 2 || month === '' || year === '' || month < 1 || month > 12) { 
         document.querySelector('.dateContainer').appendChild(errorMsg);
         expMonth.classList.add('errorBorder');
         expYear.classList.add('errorBorder');
-    } else {
-        removeErrorMessage();
+    } 
+   
+    else {
+        removeErrorMessage(errorMsg);
         return true;
     }
 }
 
 const cvcValidation = code => {
     let tempCode = String(code);
+    let errorMsg = document.createElement('p');
+    errorMsg.classList.add('errorMessage');
     errorMsg.innerText = 'Can\'t be blank';
-    if (!Number(code) && tempCode.length !== 3) {
+
+    if (!Number(code) || tempCode.length !== 3) {
         document.querySelector('.cvcContainer').appendChild(errorMsg);
         cvc.classList.add('errorBorder');
     } else {
-        removeErrorMessage();
+        removeErrorMessage(errorMsg);
         return true;
     }
 }
 
-const removeErrorMessage = () => {
+const removeErrorMessage = (errorMsg) => {
     if (errorMsg.parentNode) {
         errorMsg.parentNode.removeChild(errorMsg);
     }
@@ -110,8 +115,7 @@ const checkValidity = () => {
 
     cardNameValidation(cardName.value);
     cardNumberValidation(cardNumber.value);
-    cardExpDateValidation(expMonth.value)
-    cardExpDateValidation(expYear.value);
+    cardExpDateValidation(expMonth.value, expYear.value)
     cvcValidation(cvc.value);
 
 } 
@@ -121,13 +125,13 @@ confirmButton.addEventListener('click', event => {
     event.preventDefault();
     checkValidity();
 
-    if (!checkValidity()) {
-        return false;
-    } else {
-        document.getElementById('form').setAttribute('class', 'hidden');  // check if all input fields are true then make it hidden
-        document.querySelector('.thankYou').classList.remove('hidden');
-        return true;
-    }
+    // if (!checkValidity()) {
+    //     return false;
+    // } else {
+    //     document.getElementById('form').setAttribute('class', 'hidden');  // check if all input fields are true then make it hidden
+    //     document.querySelector('.thankYou').classList.remove('hidden');
+    //     return true;
+    // }
 })
 
 // DOM card elements
