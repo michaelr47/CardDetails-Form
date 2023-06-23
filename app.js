@@ -41,7 +41,11 @@ const expYear = document.getElementById('expDateYY');
 const cvc = document.getElementById('CVCInput');
 const confirmButton = document.getElementById('confirmBtn');
 
-
+const removeErrorMessage = (errorMsg) => {
+    if (errorMsg.parentNode) {
+        errorMsg.parentNode.removeChild(errorMsg);
+    }
+}
 
 const cardNameValidation = name => {
     let errorMsg = document.createElement('p');
@@ -103,13 +107,6 @@ const cvcValidation = code => {
         return true;
     }
 }
-
-const removeErrorMessage = (errorMsg) => {
-    if (errorMsg.parentNode) {
-        errorMsg.parentNode.removeChild(errorMsg);
-    }
-}
-
 
 const checkValidity = () => {
 
