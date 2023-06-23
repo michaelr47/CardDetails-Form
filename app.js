@@ -48,7 +48,7 @@ errorMsg.innerText = '';
 const cardNameValidation = name => {
     errorMsg.innerText = 'Full name please';
 
-    if (name.length === 0 || !isNaN(name) || !Array.from(name).includes(' ')) { 
+    if (name.length === 0 || !isNaN(name) || !name.includes(' ')) { 
         document.querySelector('.cardNameContainer').appendChild(errorMsg);
         cardName.classList.add('errorBorder');   
     } else {
@@ -62,7 +62,7 @@ const cardNumberValidation = number => {
     let stringNumber = String(number);
     errorMsg.innerText = 'Wrong format, numbers only';
 
-    if (stringNumber.length < 16 || isNaN(number))  {//add spaces between 4 numbers if true
+    if (stringNumber.length !== 16 || isNaN(number) || stringNumber.length === 0)  {//add spaces between 4 numbers if true
         document.querySelector('.cardNumberContainer').appendChild(errorMsg);
         cardNumber.classList.add('errorBorder');
     } else {
@@ -72,9 +72,12 @@ const cardNumberValidation = number => {
 }
 
 const cardExpDateValidation = date => {
-   
     errorMsg.innerText = 'Cant\'t be blank';
-    if (date.length < 2 || date === '') { 
+    let value = date.value;
+    if (value < 10) { 
+        expMonth.value = `0${value}`;
+    } 
+    if (date.length < 2 || date === '' && date < 0 || date > 13) { 
         document.querySelector('.dateContainer').appendChild(errorMsg);
         expMonth.classList.add('errorBorder');
         expYear.classList.add('errorBorder');
@@ -117,8 +120,14 @@ const checkValidity = () => {
 confirmButton.addEventListener('click', event => {
     event.preventDefault();
     checkValidity();
-    document.getElementById('form').setAttribute('class', 'hidden');
-    document.querySelector('.thankYou').classList.remove('hidden');
+
+    if (!checkValidity()) {
+        return false;
+    } else {
+        document.getElementById('form').setAttribute('class', 'hidden');  // check if all input fields are true then make it hidden
+        document.querySelector('.thankYou').classList.remove('hidden');
+        return true;
+    }
 })
 
 // DOM card elements
