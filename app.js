@@ -132,19 +132,27 @@ const cvcValidation = code => {
 }
 
 const checkValidity = () => {
-    cardNameValidation(cardName.value);
-    cardNumberValidation(cardNumber.value);
-    cardExpDateValidation(expMonth.value, expYear.value)
-    cvcValidation(cvc.value);
+    if (cardNameValidation(cardName.value) &&
+            cardNumberValidation(cardNumber.value) &&
+                cardExpDateValidation(expMonth.value, expYear.value) &&
+                    cvcValidation(cvc.value)
+        ) 
+    {
+
+        document.getElementById('form').setAttribute('class', 'hidden');  // check if all input fields are true then make it hidden
+        document.querySelector('.thankYou').classList.remove('hidden');
+        return true;
+
+    } else return false;
 } 
 
-// DOM card elements
+// accessing DOM card elements to change on input event
 const cardSixteen = document.getElementById('sixteen');
 const cardNameText = document.getElementById('cardName');
 const cardMonth = document.getElementById('month');
 const cardYear = document.getElementById('year');
 const securityCode = document.getElementById('cvcCode');
-// card el. in array
+// card elements^ in array
 const allItems = [cardSixteen, cardNameText, cardMonth, cardYear, securityCode];
 // all input elements
 const inputs = document.getElementsByTagName('input');
