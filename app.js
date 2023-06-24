@@ -114,6 +114,7 @@ const cardExpDateValidation = (month, year) => {
 
 const cvcValidation = code => {
     const cvcContainer = document.querySelector('.cvcContainer')
+    const errorMsg = cvcContainer.querySelector('.errorMsg');
     let tempCode = String(code);
 
     if (!Number(code) || tempCode.length !== 3 && !errorMsg) {
