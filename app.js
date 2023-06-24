@@ -31,105 +31,112 @@ Loop through the array of validation functions and execute each one for the corr
 
 If any validation function returns false, mark the respective input field as invalid and display an error message.
 
-If all validation functions return true, allow the form submission or proceed with further processing.
+If all validation functions return true, allow the form submission or proc
+eed with further processing.
 */
-
+// input fields
 const cardName = document.getElementById('fname');
 const cardNumber = document.getElementById('cardNumber');
 const expMonth = document.getElementById('expDateMM');
 const expYear = document.getElementById('expDateYY');
 const cvc = document.getElementById('CVCInput');
+// button in form
 const confirmButton = document.getElementById('confirmBtn');
 
-const removeErrorMessage = (errorMsg) => {
-    if (errorMsg.parentNode) {
-        errorMsg.parentNode.removeChild(errorMsg);
+const removeErrorMessage = container => {
+    const errorMsg = container.querySelector('.errorMessage');
+    if (errorMsg) {
+      container.removeChild(errorMsg);
     }
-}
+  };
+  
 
 const cardNameValidation = name => {
-    let errorMsg = document.createElement('p');
-    errorMsg.classList.add('errorMessage');
-    errorMsg.innerText = 'Full name please';
+    const nameContainer = document.querySelector('.cardNameContainer')
+    const errorMsg = nameContainer.querySelector('.errorMessage');
 
-    if (name.length === 0 || !/^[A-Za-z\s]+$/.test(name) || !name.includes(' ')) { 
-        document.querySelector('.cardNameContainer').appendChild(errorMsg);
-        cardName.classList.add('errorBorder');   
+    if (name.length === 0 || !/^[A-Za-z\s]+$/.test(name) || !name.includes(' ') && !errorMsg) { 
+        const newErrorMsg = document.createElement('p');
+        newErrorMsg.classList.add('errorMessage');
+        newErrorMsg.innerText = 'Full name please';
+
+        nameContainer.appendChild(newErrorMsg);
+        cardName.classList.add('errorBorder');  
+
     } else {
-        removeErrorMessage(errorMsg);
+        removeErrorMessage(nameContainer);
+        cardName.classList.remove('errorBorder');   
         return true;
     }
+
 }
 
 const cardNumberValidation = number => {
-    let errorMsg = document.createElement('p');
-    errorMsg.classList.add('errorMessage');
-    errorMsg.innerText = 'Wrong format, numbers only';
+    const numberContainer =  document.querySelector('.cardNumberContainer')
+    const errorMsg = numberContainer.querySelector('.errorMessage'); // checks if present
     let stringNumber = String(number);
 
-    if (stringNumber.length !== 16 || isNaN(number) || stringNumber.length === 0)  {//add spaces between 4 numbers if true
-        document.querySelector('.cardNumberContainer').appendChild(errorMsg);
+    if (stringNumber.length !== 16 || isNaN(number) || stringNumber.length === 0 && !errorMsg)  {//add spaces between 4 numbers if true
+    
+        const newErrorMsg = document.createElement('p');
+        newErrorMsg.classList.add('errorMessage');
+        newErrorMsg.innerText = 'Wrong format, numbers only';
+
+        numberContainer.appendChild(newErrorMsg);
         cardNumber.classList.add('errorBorder');
+        
     } else {
-        removeErrorMessage(errorMsg);
+        removeErrorMessage(numberContainer);
+        cardNumber.classList.remove('errorBorder');
         return true; 
     } 
 }
 
 const cardExpDateValidation = (month, year) => {
-    let errorMsg = document.createElement('p');
-    errorMsg.classList.add('errorMessage');
-    errorMsg.innerText = 'Cant\'t be blank';
-   
-    if (month.length < 2 || year.length < 2 || month === '' || year === '' || month < 1 || month > 12) { 
-        document.querySelector('.dateContainer').appendChild(errorMsg);
+    const cardDateContainer = document.querySelector('.dateContainer');
+    const errorMsg = cardDateContainer.querySelector('.errorMsg');
+
+    if (month.length < 2 || year.length < 2 || month === '' || year === '' || month < 1 || month > 12 && !errorMsg) { 
+        const newErrorMsg = document.createElement('p');
+        newErrorMsg.classList.add('errorMessage');
+        newErrorMsg.innerText = 'Cant\'t be blank';
+
+        cardDateContainer.appendChild(newErrorMsg);
         expMonth.classList.add('errorBorder');
         expYear.classList.add('errorBorder');
-    } 
-   
-    else {
-        removeErrorMessage(errorMsg);
+    } else {
+        removeErrorMessage(cardDateContainer);
+        expMonth.classList.remove('errorBorder');
+        expYear.classList.remove('errorBorder');
         return true;
     }
 }
 
 const cvcValidation = code => {
+    const cvcContainer = document.querySelector('.cvcContainer')
     let tempCode = String(code);
-    let errorMsg = document.createElement('p');
-    errorMsg.classList.add('errorMessage');
-    errorMsg.innerText = 'Can\'t be blank';
 
-    if (!Number(code) || tempCode.length !== 3) {
-        document.querySelector('.cvcContainer').appendChild(errorMsg);
-        cvc.classList.add('errorBorder');
+    if (!Number(code) || tempCode.length !== 3 && !errorMsg) {
+        const newErrorMsg = document.createElement('p');
+        newErrorMsg.classList.add('errorMessage');
+        newErrorMsg.innerText = 'Can\'t be blank';
+
+        cvcContainer.appendChild(newErrorMsg);
+        cvc.setAttribute('class', 'errorBorder');
+       
     } else {
-        removeErrorMessage(errorMsg);
+        removeErrorMessage(cvcContainer);
+        cvc.removeAttribute('class', 'errorBorder');
         return true;
     }
 }
 
 const checkValidity = () => {
-
     cardNameValidation(cardName.value);
     cardNumberValidation(cardNumber.value);
     cardExpDateValidation(expMonth.value, expYear.value)
     cvcValidation(cvc.value);
-
 } 
-
-
-confirmButton.addEventListener('click', event => {
-    event.preventDefault();
-    checkValidity();
-
-    // if (!checkValidity()) {
-    //     return false;
-    // } else {
-    //     document.getElementById('form').setAttribute('class', 'hidden');  // check if all input fields are true then make it hidden
-    //     document.querySelector('.thankYou').classList.remove('hidden');
-    //     return true;
-    // }
-})
 
 // DOM card elements
 const cardSixteen = document.getElementById('sixteen');
@@ -177,6 +184,20 @@ const changeCardSecurityCode = () => {
             securityCode.innerText = inputs[4].value;
         })
 }
+
+confirmButton.addEventListener('click', event => {
+    event.preventDefault();
+    checkValidity();
+
+    // if (!checkValidity()) {
+    //     return false;
+    // } else {
+    //     document.getElementById('form').setAttribute('class', 'hidden');  // check if all input fields are true then make it hidden
+    //     document.querySelector('.thankYou').classList.remove('hidden');
+    //     return true;
+    // }
+});
+
 
 changeCardName();
 changeCardNumber();
