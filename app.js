@@ -96,14 +96,22 @@ const cardExpDateValidation = (month, year) => {
     const cardDateContainer = document.querySelector('.dateContainer');
     const errorMsg = cardDateContainer.querySelector('.errorMsg');
 
-    if (month.length < 2 || year.length < 2 || month === '' || year === '' || month < 1 || month > 12 && !errorMsg) { 
-        const newErrorMsg = document.createElement('p');
-        newErrorMsg.classList.add('errorMessage');
-        newErrorMsg.innerText = 'Cant\'t be blank';
+    const newErrorMsg = document.createElement('p');
+    newErrorMsg.classList.add('errorMessage');
+    newErrorMsg.innerText = 'Cant\'t be blank';
 
+    if (month === '' || year === '' && !errorMsg) { 
+       
         cardDateContainer.appendChild(newErrorMsg);
         expMonth.classList.add('errorBorder');
         expYear.classList.add('errorBorder');
+
+    } else if (month.length < 2 || year.length < 2 || month < 1 || month > 12) {
+        newErrorMsg.innerText = 'Wrong format';
+
+        expMonth.classList.add('errorBorder');
+        expYear.classList.add('errorBorder');
+        cardDateContainer.appendChild(newErrorMsg);
     } else {
         removeErrorMessage(cardDateContainer);
         expMonth.classList.remove('errorBorder');
