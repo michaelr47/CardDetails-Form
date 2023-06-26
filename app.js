@@ -39,7 +39,7 @@ const cardName = document.getElementById('fname');
 const cardNumber = document.getElementById('cardNumber');
 const expMonth = document.getElementById('expDateMM');
 const expYear = document.getElementById('expDateYY');
-const cvc = document.getElementById('CVCInput');
+const cvc = document.querySelector('.CVCInput');
 // button in form
 const confirmButton = document.getElementById('confirmBtn');
 
@@ -131,11 +131,11 @@ const cvcValidation = code => {
         newErrorMsg.innerText = 'Can\'t be blank';
 
         cvcContainer.appendChild(newErrorMsg);
-        cvc.setAttribute('class', 'errorBorder');
+        cvc.classList.add('errorBorder');
        
     } else {
         removeErrorMessage(cvcContainer);
-        cvc.removeAttribute('class', 'errorBorder');
+        cvc.classList.remove('errorBorder');
         return true;
     }
 }

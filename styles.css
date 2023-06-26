@@ -121,18 +121,12 @@ input:hover {
     border-radius: 5px;
     outline: none;
     padding: .5rem;
-
 }
 
+.dateAndCVC { display: flex; }
+.dateContainer, .cvcContainer { width: 50%; }
 
-.dateAndCVC {
-    display: flex;
-}
-.dateContainer, .cvcContainer {
-    width: 50%;
-}
-
-.MMYY, #CVCInput {
+.MMYY, .CVCInput {
     height: 2.5rem;
     border: 1px solid var(--lightGrayish);
     border-radius: 5px;
@@ -141,11 +135,11 @@ input:hover {
     margin: 5px 0px 0px;
 }
 
-#CVCInput {
+.CVCInput {
     width: 100%;
     outline: none;
-
 }
+
 .cardInput:focus, #CVCInput:focus {
     border-width: 1px;
     border-style: solid; 
@@ -163,7 +157,6 @@ input:hover {
     border-radius: 5px;
     border: none;
 }
-
 
 .thankYou {
     height: 375px;
