@@ -43,6 +43,17 @@ const cvc = document.querySelector('.CVCInput');
 // button in form
 const confirmButton = document.getElementById('confirmBtn');
 
+// accessing DOM card elements to change on input event
+const cardSixteen = document.getElementById('sixteen');
+const cardNameText = document.getElementById('cardName');
+const cardMonth = document.getElementById('month');
+const cardYear = document.getElementById('year');
+const securityCode = document.getElementById('cvcCode');
+// card elements^ in array
+const allCardInfo = [cardSixteen, cardNameText, cardMonth, cardYear, securityCode];
+// all input elements
+const inputs = [cardName, cardNumber, expMonth, expYear, cvc];
+
 const removeErrorMessage = container => {
     const errorMsg = container.querySelector('.errorMessage');
     if (errorMsg) {
@@ -51,27 +62,10 @@ const removeErrorMessage = container => {
   };
   
 const moveElementLeftToRight = (element) => {
-    // element.style.transform = 'translateX(10px)';
-    const spinning = [
-        // { transform: "scale(0)" },
-        // { transform: "scale(0)" },
-        // { transform: "rotate(15deg) scale(0, 1)" },
-        // { transform: "rotate(-10deg) scale(1, 1)" },
-        { transform: "rotate(0deg) scale(.5)" },
-        { transform: "rotateY(10deg) scale(.8)" },
-        { transform: "rotateY(-5deg) scale(.9)" },
-        { transform: "rotate(0deg) scale(1)" },
-      ];
-      
-      const timing = {
-        duration: 500,
-        iterations: 1,
-      };
-      
-    //   element.addEventListener("click", () => {
-    element.animate(spinning, timing);
-    //   });
-      
+    
+    const shake = new KeyframeEffect(
+
+    )
   } 
   // animate input elements shaking left to right upon invalid input
 
@@ -180,16 +174,6 @@ const checkValidity = () => {
     } else return false;
 } 
 
-// accessing DOM card elements to change on input event
-const cardSixteen = document.getElementById('sixteen');
-const cardNameText = document.getElementById('cardName');
-const cardMonth = document.getElementById('month');
-const cardYear = document.getElementById('year');
-const securityCode = document.getElementById('cvcCode');
-// card elements^ in array
-const allItems = [cardSixteen, cardNameText, cardMonth, cardYear, securityCode];
-// all input elements
-const inputs = document.getElementsByTagName('input');
 
 const changeCardName = () => {
     inputs[0].addEventListener('input', () => {
@@ -231,13 +215,6 @@ confirmButton.addEventListener('click', event => {
     event.preventDefault();
     checkValidity();
 
-    // if (!checkValidity()) {
-    //     return false;
-    // } else {
-    //     document.getElementById('form').setAttribute('class', 'hidden');  // check if all input fields are true then make it hidden
-    //     document.querySelector('.thankYou').classList.remove('hidden');
-    //     return true;
-    // }
 });
 
 
