@@ -50,6 +50,30 @@ const removeErrorMessage = container => {
     }
   };
   
+const moveElementLeftToRight = (element) => {
+    // element.style.transform = 'translateX(10px)';
+    const spinning = [
+        // { transform: "scale(0)" },
+        // { transform: "scale(0)" },
+        // { transform: "rotate(15deg) scale(0, 1)" },
+        // { transform: "rotate(-10deg) scale(1, 1)" },
+        { transform: "rotate(0deg) scale(.5)" },
+        { transform: "rotateY(10deg) scale(.8)" },
+        { transform: "rotateY(-5deg) scale(.9)" },
+        { transform: "rotate(0deg) scale(1)" },
+      ];
+      
+      const timing = {
+        duration: 500,
+        iterations: 1,
+      };
+      
+    //   element.addEventListener("click", () => {
+    element.animate(spinning, timing);
+    //   });
+      
+  } 
+  // animate input elements shaking left to right upon invalid input
 
 const cardNameValidation = name => {
     const nameContainer = document.querySelector('.cardNameContainer')
@@ -62,10 +86,11 @@ const cardNameValidation = name => {
 
         nameContainer.appendChild(newErrorMsg);
         cardName.classList.add('errorBorder');  
+        moveElementLeftToRight(cardName);  
 
     } else {
         removeErrorMessage(nameContainer);
-        cardName.classList.remove('errorBorder');   
+        cardName.classList.remove('errorBorder'); 
         return true;
     }
 
