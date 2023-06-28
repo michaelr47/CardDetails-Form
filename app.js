@@ -61,14 +61,9 @@ const removeErrorMessage = container => {
     }
   };
   
-const moveElementLeftToRight = (element) => {
-    
-    const shake = new KeyframeEffect(
+// const moveElementLeftToRight = inputField => inputField.animationName = 'shake';
 
-    )
-  } 
-  // animate input elements shaking left to right upon invalid input
-
+  
 const cardNameValidation = name => {
     const nameContainer = document.querySelector('.cardNameContainer')
     const errorMsg = nameContainer.querySelector('.errorMessage');
@@ -80,7 +75,7 @@ const cardNameValidation = name => {
 
         nameContainer.appendChild(newErrorMsg);
         cardName.classList.add('errorBorder');  
-        moveElementLeftToRight(cardName);  
+        // moveElementLeftToRight(cardName);
 
     } else {
         removeErrorMessage(nameContainer);

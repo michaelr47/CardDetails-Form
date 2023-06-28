@@ -193,6 +193,7 @@ input:hover {
 }
 .errorBorder {
     border: 1px solid red;
+    animation: shake 0.2s ease-out 0s 3;
 }
 
 #confirmBtn:hover, .thankYou button:hover { cursor: pointer; }
@@ -279,3 +280,12 @@ input:hover {
     }
     form { margin: 2rem 10px 0px; }
 }
+
+
+@keyframes shake {
+    0% { margin-left: 0rem; }
+    25% { margin-left: 0.6rem; }
+    75% { margin-left: -0.6rem; }
+    100% { margin-left: 0rem; }
+  }
+  
