@@ -61,9 +61,7 @@ const removeErrorMessage = container => {
     }
   };
   
-// const moveElementLeftToRight = inputField => inputField.animationName = 'shake';
 
-  
 const cardNameValidation = name => {
     const nameContainer = document.querySelector('.cardNameContainer')
     const errorMsg = nameContainer.querySelector('.errorMessage');
@@ -75,7 +73,7 @@ const cardNameValidation = name => {
 
         nameContainer.appendChild(newErrorMsg);
         cardName.classList.add('errorBorder');  
-        // moveElementLeftToRight(cardName);
+        
 
     } else {
         removeErrorMessage(nameContainer);
@@ -83,6 +81,12 @@ const cardNameValidation = name => {
         return true;
     }
 
+    // want to prevent errorMsg from stacking up upon multiple 'confirm' clicks
+    // if (errorMsg && cardName.classList.contains('errorBorder')) {
+    //     return;
+    // }
+ 
+ 
 }
 
 const cardNumberValidation = number => {
@@ -178,7 +182,23 @@ const changeCardName = () => {
 const changeCardNumber = () => {
     inputs[1].addEventListener('input', () => {
             cardSixteen.innerText = inputs[1].value;
-        })
+            
+            // for (let i = 0; i < inputs[1].value.length; i++) { // add space after four numbers
+                // console.log(inputs[1].value);
+                if (inputs[1].value.length % 4 && inputs[1].value.length > 0) {
+                    console.log(inputs[1].value.concat(' '));
+                    inputs[1].value.concat(' ');
+
+                }
+            })
+      
+            // if (inputs[1].value.length === 16) {
+            //     console.log(cardSixteen.innerText);
+            // }
+            
+}
+
+       
     //     let val = this.value; //card number input
   
     //     for (let i = 0; i < val.length; i++) { // add space after four numbers
@@ -189,7 +209,6 @@ const changeCardNumber = () => {
        
     //   }
       
-}
 const changeCardMonth = () => {
     inputs[2].addEventListener('input', () => {
             cardMonth.innerText = inputs[2].value;
