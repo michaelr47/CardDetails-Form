@@ -42,7 +42,8 @@ const expYear = document.getElementById('expDateYY');
 const cvc = document.querySelector('.CVCInput');
 // button in form
 const confirmButton = document.getElementById('confirmBtn');
-
+// contine button 
+const continueButton = document.getElementById('continueBtn');
 // accessing DOM card elements to change on input event
 const cardSixteen = document.getElementById('sixteen');
 const cardNameText = document.getElementById('cardName');
@@ -94,7 +95,7 @@ const cardNumberValidation = number => {
     const errorMsg = numberContainer.querySelector('.errorMessage'); // checks if present
     let stringNumber = String(number);
 
-    if (stringNumber.length !== 16 || isNaN(number) || stringNumber.length === 0 && !errorMsg)  {//add spaces between 4 numbers if true
+    if (stringNumber.length !== 19 || isNaN(number) || stringNumber.length === 0 && !errorMsg)  {//add spaces between 4 numbers if true
     
         const newErrorMsg = document.createElement('p');
         newErrorMsg.classList.add('errorMessage');
@@ -180,12 +181,13 @@ const changeCardName = () => {
         })
 }
 const changeCardNumber = () => {
+    let inputVal = inputs[1].value;
     inputs[1].addEventListener('input', () => {
             cardSixteen.innerText = inputs[1].value;
             
             // for (let i = 0; i < inputs[1].value.length; i++) { // add space after four numbers
                 // console.log(inputs[1].value);
-                if (inputs[1].value.length % 4 && inputs[1].value.length > 0) {
+                if (inputs[1].value.length % 4 === 0 && inputs[1].value.length > 0) {
                     console.log(inputs[1].value.concat(' '));
                     inputs[1].value.concat(' ');
 
@@ -225,15 +227,30 @@ const changeCardSecurityCode = () => {
         })
 }
 
+const inputFieldsRestart = () => {
+    for (const input of inputs) {
+        input.value = '';
+    }
+}
+
 confirmButton.addEventListener('click', event => {
     event.preventDefault();
     checkValidity();
-
 });
 
+const displayForm = (button) => {
+    button.addEventListener('click', () => {
+        inputFieldsRestart();
+        document.getElementById('form').removeAttribute('class', 'hidden');
+        document.querySelector('.thankYou').classList.add('hidden');
+         
+    });
+}
 
+inputFieldsRestart();
 changeCardName();
 changeCardNumber();
 changeCardMonth();
 changeCardYear();
 changeCardSecurityCode();
+displayForm(continueButton);
