@@ -226,6 +226,9 @@ input:hover {
         margin: 1rem 0px 0px;
         width: 60%;
     }
+    .thankYou {
+        margin-left: 0rem;
+    }
     .frontCard {
         z-index: 1;
         top: 150px;
