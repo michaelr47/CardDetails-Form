@@ -188,7 +188,6 @@ const changeCardNumber = () => {
             // for (let i = 0; i < inputs[1].value.length; i++) { // add space after four numbers
                 // console.log(inputs[1].value);
                 if (inputs[1].value.length % 4 === 0 && inputs[1].value.length > 0) {
-                    console.log(inputs[1].value.concat(' '));
                     inputs[1].value.concat(' ');
 
                 }
@@ -221,25 +220,29 @@ const changeCardYear = () => {
             cardYear.innerText = inputs[3].value;
         })
 }
+
 const changeCardSecurityCode = () => {
     inputs[4].addEventListener('input', () => {
             securityCode.innerText = inputs[4].value;
         })
 }
 
+let originalText = [...allCardInfo].map(el => el.innerText);
+const cardInfoRestart = () => {
+    allCardInfo.forEach((info, i) => {
+        info.innerText = originalText[i];
+    });
+}
+
 const inputFieldsRestart = () => {
-    for (const input of inputs) {
-        input.value = '';
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = '';
     }
 }
 
-confirmButton.addEventListener('click', event => {
-    event.preventDefault();
-    checkValidity();
-});
-
 const displayForm = (button) => {
     button.addEventListener('click', () => {
+        cardInfoRestart();
         inputFieldsRestart();
         document.getElementById('form').removeAttribute('class', 'hidden');
         document.querySelector('.thankYou').classList.add('hidden');
@@ -247,7 +250,12 @@ const displayForm = (button) => {
     });
 }
 
-inputFieldsRestart();
+confirmButton.addEventListener('click', event => {
+    event.preventDefault();
+    checkValidity();
+});
+
+
 changeCardName();
 changeCardNumber();
 changeCardMonth();
