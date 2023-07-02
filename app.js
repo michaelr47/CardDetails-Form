@@ -62,14 +62,12 @@ const removeErrorMessage = container => {
     }
   };
   
-  const childCount = (container) => {
-    return container.children.length;
-  }
+const childCount = container => container.children.length;
 
 const cardNameValidation = name => {
     const nameContainer = document.querySelector('.cardNameContainer')
     const errorMsg = nameContainer.querySelector('.errorMessage');
-
+    
     if (name.length === 0 || !/^[A-Za-z\s]+$/.test(name) || !name.includes(' ') && !errorMsg) { 
         const newErrorMsg = document.createElement('p');
         newErrorMsg.classList.add('errorMessage');
@@ -78,22 +76,16 @@ const cardNameValidation = name => {
         nameContainer.appendChild(newErrorMsg);
         cardName.classList.add('errorBorder');  
         
-
+       
     } else {
         removeErrorMessage(nameContainer);
         cardName.classList.remove('errorBorder'); 
         return true;
     }
-
-    // console.log(nameContainer, childCount(nameContainer));
-    // if (nameContainer.hasChildNodes()) {
-    //     return;
-    // }
-    // want to prevent errorMsg from stacking up upon multiple 'confirm' clicks
-    // if (errorMsg && cardName.classList.contains('errorBorder')) {
-    //     return;
-    // }
- 
+    // checks if newErrorMsg is present then dont append more error messages onscreen, prevent text stacking
+    if (childCount(nameContainer) === 5) {
+        nameContainer.removeChild(nameContainer.lastChild);
+    }
  
 }
 
@@ -116,7 +108,10 @@ const cardNumberValidation = number => {
         cardNumber.classList.remove('errorBorder');
         return true; 
     } 
-    // console.log(numberContainer, childCount(numberContainer));
+
+    if (childCount(numberContainer) === 5) {
+        numberContainer.removeChild(numberContainer.lastChild);
+    }
 }
 
 const cardExpDateValidation = (month, year) => {
@@ -145,7 +140,10 @@ const cardExpDateValidation = (month, year) => {
         expYear.classList.remove('errorBorder');
         return true;
     }
-    console.log(childCount(cardDateContainer)); // 5
+
+    if (childCount(cardDateContainer) === 6) {  // 6
+        cardDateContainer.removeChild(cardDateContainer.lastChild);
+    }
 }
 
 const cvcValidation = code => {
@@ -166,7 +164,10 @@ const cvcValidation = code => {
         cvc.classList.remove('errorBorder');
         return true;
     }
-    console.log(childCount(cvcContainer)); // 4
+    
+    if (childCount(cvcContainer) === 5) {// 4
+        cvcContainer.removeChild(cvcContainer.lastChild);
+    }
 }
 
 const checkValidity = () => {
