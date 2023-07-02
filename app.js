@@ -62,6 +62,9 @@ const removeErrorMessage = container => {
     }
   };
   
+  const childCount = (container) => {
+    return container.children.length;
+  }
 
 const cardNameValidation = name => {
     const nameContainer = document.querySelector('.cardNameContainer')
@@ -82,6 +85,10 @@ const cardNameValidation = name => {
         return true;
     }
 
+    // console.log(nameContainer, childCount(nameContainer));
+    // if (nameContainer.hasChildNodes()) {
+    //     return;
+    // }
     // want to prevent errorMsg from stacking up upon multiple 'confirm' clicks
     // if (errorMsg && cardName.classList.contains('errorBorder')) {
     //     return;
@@ -109,6 +116,7 @@ const cardNumberValidation = number => {
         cardNumber.classList.remove('errorBorder');
         return true; 
     } 
+    // console.log(numberContainer, childCount(numberContainer));
 }
 
 const cardExpDateValidation = (month, year) => {
@@ -137,6 +145,7 @@ const cardExpDateValidation = (month, year) => {
         expYear.classList.remove('errorBorder');
         return true;
     }
+    console.log(childCount(cardDateContainer)); // 5
 }
 
 const cvcValidation = code => {
@@ -157,6 +166,7 @@ const cvcValidation = code => {
         cvc.classList.remove('errorBorder');
         return true;
     }
+    console.log(childCount(cvcContainer)); // 4
 }
 
 const checkValidity = () => {
