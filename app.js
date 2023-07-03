@@ -94,7 +94,7 @@ const cardNumberValidation = number => {
     const errorMsg = numberContainer.querySelector('.errorMessage'); // checks if present
     let stringNumber = String(number);
 
-    if (stringNumber.length !== 19 || isNaN(number) || stringNumber.length === 0 && !errorMsg)  {//add spaces between 4 numbers if true
+    if (stringNumber.length !== 19 || stringNumber.length === 0 && !errorMsg)  {//add spaces between 4 numbers if true
     
         const newErrorMsg = document.createElement('p');
         newErrorMsg.classList.add('errorMessage');
@@ -194,19 +194,19 @@ const changeCardName = () => {
 
 const changeCardNumber = () => { 
     inputs[1].addEventListener('input', () => {
-    let inputVal = inputs[1].value.replace(/[A-Za-z\s]/g, '');
+        let inputVal = inputs[1].value.replace(/[A-Za-z\s]/g, '');
+        cardSixteen.innerText = inputs[1].value;
+        let formatVal = '';
 
-    let formatVal = '';
-
-    for (let i = 0; i < inputVal.length; i++) { // add space after four numbers
-        if (i % 4 === 0 && i > 0) {
-            formatVal += ' ';
+        for (let i = 0; i < inputVal.length; i++) { // add space after four numbers
+            if (i % 4 === 0 && i > 0) {
+                formatVal += ' ';
+            }
+            formatVal += inputVal[i];
         }
-        formatVal += inputVal[i];
-    }
 
         inputs[1].value = formatVal;
-        console.log(inputs[1].value.length);
+       
     });
 }
 
