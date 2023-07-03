@@ -191,35 +191,25 @@ const changeCardName = () => {
             cardNameText.innerText = inputs[0].value;
         })
 }
-const changeCardNumber = () => {
-    let inputVal = inputs[1].value;
-    inputs[1].addEventListener('input', () => {
-            cardSixteen.innerText = inputs[1].value;
-            
-            // for (let i = 0; i < inputs[1].value.length; i++) { // add space after four numbers
-                // console.log(inputs[1].value);
-                if (inputs[1].value.length % 4 === 0 && inputs[1].value.length > 0) {
-                    inputs[1].value.concat(' ');
 
-                }
-            })
-      
-            // if (inputs[1].value.length === 16) {
-            //     console.log(cardSixteen.innerText);
-            // }
-            
+const changeCardNumber = () => { 
+    inputs[1].addEventListener('input', () => {
+    let inputVal = inputs[1].value.replace(/[A-Za-z\s]/g, '');
+
+    let formatVal = '';
+
+    for (let i = 0; i < inputVal.length; i++) { // add space after four numbers
+        if (i % 4 === 0 && i > 0) {
+            formatVal += ' ';
+        }
+        formatVal += inputVal[i];
+    }
+
+        inputs[1].value = formatVal;
+        console.log(inputs[1].value.length);
+    });
 }
 
-       
-    //     let val = this.value; //card number input
-  
-    //     for (let i = 0; i < val.length; i++) { // add space after four numbers
-    //       if (i % 4 && i > 0) {
-    //         val.concat(' ')
-       
-    //     }
-       
-    //   }
       
 const changeCardMonth = () => {
     inputs[2].addEventListener('input', () => {
