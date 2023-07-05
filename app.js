@@ -189,7 +189,10 @@ const checkValidity = () => {
 const changeCardName = () => {
     inputs[0].addEventListener('input', () => {
             cardNameText.innerText = inputs[0].value;
+            cardNameText.style.textTransform = 'uppercase';
         })
+       
+        
 }
 
 const changeCardNumber = () => { 

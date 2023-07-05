@@ -193,7 +193,7 @@ input:hover {
 }
 .errorBorder {
     border: 1px solid red;
-    animation: shake 0.25s ease-out 0s 2;
+    animation: shake 0.25s ease-out 0s 1;
 }
 
 #confirmBtn:hover, .thankYou button:hover { cursor: pointer; }
