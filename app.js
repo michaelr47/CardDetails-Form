@@ -35,6 +35,7 @@ If all validation functions return true, allow the form submission or proc
 eed with further processing.
 */
 // input fields
+
 const cardName = document.getElementById('fname');
 const cardNumber = document.getElementById('cardNumber');
 const expMonth = document.getElementById('expDateMM');
@@ -115,6 +116,9 @@ const cardNumberValidation = number => {
 }
 
 const cardExpDateValidation = (month, year) => {
+    let date = new Date();
+    let getMonth = `${0}${date.getMonth() + 1}`;
+    let getYear = String(date.getFullYear()).split('').slice(2,4).join('');
     const cardDateContainer = document.querySelector('.dateContainer');
     const errorMsg = cardDateContainer.querySelector('.errorMsg');
 
@@ -134,6 +138,15 @@ const cardExpDateValidation = (month, year) => {
         expMonth.classList.add('errorBorder');
         expYear.classList.add('errorBorder');
         cardDateContainer.appendChild(newErrorMsg);
+
+    } else if (getYear > year || (year === getYear && getMonth >= month)) {
+        newErrorMsg.innerText = 'Card is expired';
+
+        expMonth.classList.add('errorBorder');
+        expYear.classList.add('errorBorder');
+        cardDateContainer.appendChild(newErrorMsg);
+
+
     } else {
         removeErrorMessage(cardDateContainer);
         expMonth.classList.remove('errorBorder');
