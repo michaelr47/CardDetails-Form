@@ -163,16 +163,23 @@ const cvcValidation = code => {
     const cvcContainer = document.querySelector('.cvcContainer')
     const errorMsg = cvcContainer.querySelector('.errorMsg');
     let tempCode = String(code);
+    
+    const newErrorMsg = document.createElement('p');
+    newErrorMsg.classList.add('errorMessage');
 
     if (!Number(code) || tempCode.length !== 3 && !errorMsg) {
-        const newErrorMsg = document.createElement('p');
-        newErrorMsg.classList.add('errorMessage');
         newErrorMsg.innerText = 'Can\'t be blank';
-
         cvcContainer.appendChild(newErrorMsg);
         cvc.classList.add('errorBorder');
        
-    } else {
+    } else if (!/^\d{3}$/.test(code)) {
+        newErrorMsg.innerText = 'Needs to be a 3 digit code';
+        cvcContainer.appendChild(newErrorMsg);
+        cvc.classList.add('errorBorder');
+        console.log('3 digits plz')
+    }
+    
+    else {
         removeErrorMessage(cvcContainer);
         cvc.classList.remove('errorBorder');
         return true;
