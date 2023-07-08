@@ -66,7 +66,7 @@ const removeErrorMessage = container => {
 const childCount = container => container.children.length;
 
 const cardNameValidation = name => {
-    const nameContainer = document.querySelector('.cardNameContainer')
+    const nameContainer = document.querySelector('.cardNameContainer');
     const errorMsg = nameContainer.querySelector('.errorMessage');
     
     if (name.length === 0 || !/^[A-Za-z\s]+$/.test(name) || !name.includes(' ') && !errorMsg) { 
@@ -91,7 +91,7 @@ const cardNameValidation = name => {
 }
 
 const cardNumberValidation = number => {
-    const numberContainer =  document.querySelector('.cardNumberContainer')
+    const numberContainer =  document.querySelector('.cardNumberContainer');
     const errorMsg = numberContainer.querySelector('.errorMessage'); // checks if present
     let stringNumber = String(number);
 
@@ -160,26 +160,25 @@ const cardExpDateValidation = (month, year) => {
 }
 
 const cvcValidation = code => {
-    const cvcContainer = document.querySelector('.cvcContainer')
+    const cvcContainer = document.querySelector('.cvcContainer');
     const errorMsg = cvcContainer.querySelector('.errorMsg');
     let tempCode = String(code);
     
     const newErrorMsg = document.createElement('p');
     newErrorMsg.classList.add('errorMessage');
 
-    if (!Number(code) || tempCode.length !== 3 && !errorMsg) {
+    if (!Number(code) || tempCode.length === 0 && !errorMsg) {
         newErrorMsg.innerText = 'Can\'t be blank';
         cvcContainer.appendChild(newErrorMsg);
         cvc.classList.add('errorBorder');
        
-    } else if (!/^\d{3}$/.test(code)) {
-        newErrorMsg.innerText = 'Needs to be a 3 digit code';
+    } else if (tempCode.length > 0 && tempCode.length < 3) {
+
+        newErrorMsg.innerText = 'Needs to a be a 3 digit code';
         cvcContainer.appendChild(newErrorMsg);
         cvc.classList.add('errorBorder');
-        console.log('3 digits plz')
-    }
     
-    else {
+    }  else {
         removeErrorMessage(cvcContainer);
         cvc.classList.remove('errorBorder');
         return true;
