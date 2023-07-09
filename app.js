@@ -204,50 +204,43 @@ const checkValidity = () => {
     } else return false;
 } 
 
+const changeCardInfo = () => {
+    inputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+            switch (index) {
+                case 0:
+                    cardNameText.innerText = input.value;
+                    cardNameText.style.textTransform = 'uppercase';
+                    break;
+                    
+                case 1:
+                    let inputVal = input.value.replace(/[A-Za-z\s]/g, '');
+                    cardSixteen.innerText = input.value;
+                    let formatVal = '';
+                    
+                    for (let i = 0; i < inputVal.length; i++) { // add space after four numbers
+                        if (i % 4 === 0 && i > 0) {
+                            formatVal += ' ';
+                        }
+                            formatVal += inputVal[i];
+                        }
+                        input.value = formatVal;
+                        break;
 
-const changeCardName = () => {
-    inputs[0].addEventListener('input', () => {
-            cardNameText.innerText = inputs[0].value;
-            cardNameText.style.textTransform = 'uppercase';
+                case 2:
+                    cardMonth.innerText = input.value; 
+                    break;
+
+                case 3: 
+                    cardYear.innerText = input.value;
+                    break;
+
+                case 4:
+                    securityCode.innerText = input.value;
+                    break;
+            }  
         })
-       
-        
-}
-
-const changeCardNumber = () => { 
-    inputs[1].addEventListener('input', () => {
-        let inputVal = inputs[1].value.replace(/[A-Za-z\s]/g, '');
-        cardSixteen.innerText = inputs[1].value;
-        let formatVal = '';
-
-        for (let i = 0; i < inputVal.length; i++) { // add space after four numbers
-            if (i % 4 === 0 && i > 0) {
-                formatVal += ' ';
-            }
-            formatVal += inputVal[i];
-        }
-
-        inputs[1].value = formatVal;
-       
-    });
-}
-
-      
-const changeCardMonth = () => {
-    inputs[2].addEventListener('input', () => {
-            cardMonth.innerText = inputs[2].value;
-        })
-}
-const changeCardYear = () => {
-    inputs[3].addEventListener('input', () => {
-            cardYear.innerText = inputs[3].value;
-        })
-}
-
-const changeCardSecurityCode = () => {
-    inputs[4].addEventListener('input', () => {
-            securityCode.innerText = inputs[4].value;
-        })
+    })
 }
 
 let originalText = [...allCardInfo].map(el => el.innerText);
@@ -279,9 +272,5 @@ confirmButton.addEventListener('click', event => {
 });
 
 
-changeCardName();
-changeCardNumber();
-changeCardMonth();
-changeCardYear();
-changeCardSecurityCode();
+changeCardInfo();
 displayForm(continueButton);
