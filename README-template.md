@@ -13,8 +13,6 @@ This is a solution to the [Interactive card details form challenge on Frontend M
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -45,7 +43,7 @@ Users should be able to:
 ## My process
 
 ### Built with
-
+- vanilla JS
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
