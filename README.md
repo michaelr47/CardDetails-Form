@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github repo](https://github.com/michaelr47/CardDetails-Form)
+- Live Site URL: [Card Details Form](https://michaelr47.github.io/CardDetails-Form/)
 
 ## My process
 
